@@ -24,6 +24,7 @@ body{
 		}
 		h2{
 			color: white;
+			background: linear-gradient(violet,blue);
 			text-align: center;
 			font-size: 50px;
 			padding: 50px;
@@ -104,6 +105,37 @@ body{
 			
 		}
 
+		@keyframes hoo{
+			
+			0%{width: 300px;height: 300px;}
+			100%{width: 324px;height: 324px;}
+			
+			
+		}
+
+		@keyframes hoo2{
+			
+			0%{width: 324px;height: 324px;}
+			100%{width: 300px;height: 300px;}
+			
+			
+		}
+
+		button.an{
+			animation-name: hoo;
+			animation-duration: 0.5s;
+			width: 324px;
+			height: 324px;
+
+		}
+
+		button.pn{
+			animation-name: hoo2;
+			animation-duration: 0.5s;
+			width: 300px;
+			height: 300px;
+		}
+
 		img{
 
 			border:solid;
@@ -175,6 +207,11 @@ body{
 
 	}
 
+	@keyframes buhover{
+		0% {border-color: white;}
+		100% {border-color: gold;}
+	}
+
 	button.p{
 
 		animation-name: flash;
@@ -193,6 +230,11 @@ body{
 
 	}
 
+	button.hover{
+		animation-name: buhover;
+		animation-duration: 1s;
+	}
+
 	p.posts{
 
 		
@@ -209,4 +251,125 @@ body{
 		padding: 5px;
 
 	}
+	p.posttime{
+		background: linear-gradient(to top, darksalmon, whitesmoke);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		color: black;
+
+		font-size: 20px;
+
+		margin: 1px 10px;
+
+		border-top: solid;
+		border-left: solid;
+		border-right: solid;
+
+		border-width: 2px;
+		border-color: seashell;
+		border-radius: 10px;
+		
+	}
+
+	@keyframes wide{
+		0%{width: 250px}
+		100%{width: 350px}
+	}
+
+	@keyframes wideout{
+		0%{width: 350px}
+		100%{width: 250px}
+	}
+
+
+	div.bar{
+		background: linear-gradient(to top, skyblue, blue);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+
+		height: 200px;
+		
+	}
+
+	button.ok{
+		width: 250px;
+		height: 40px;
+		
+		padding: 10px 20px;
+			
+		margin: 20px 20px;
+		border-radius: 20px;
+		background: linear-gradient(violet, blueviolet);
+
+		color: white;
+
+		font-size: 20px;
+	}
+
+	button.wide{
+		width: 350px;
+		animation-name: wide;
+		animation-duration: 1s;
+	}
+
+	button.wideout{
+		width: 250px;
+		animation-name: wideout;
+		animation-duration: 1s;
+	}
+
+	input{
+		padding: 10px 10px;
+		border-radius: 20px;
+		font-family: monospace;
+	}
+
+	div.label{
+		color: white;
+		position: relative;
+		display: inline-block;
+
+		
+	}
+
+	div.box{
+		color: white;
+		background: white;
+		position: absolute;
+		z-index: 1;
+		display: inline-block;
+
+		background: linear-gradient(ghostwhite,seashell);
+		border-top: solid;
+		border-left: solid;
+		color: grey;
+		bottom: 0%;
+		width: 800px;
+
+		left: 20%;
+
+		height: 200px;
+		padding: 0px 0px;
+	}
+
+	span.label2{
+		background: linear-gradient(ghostwhite,seashell);
+		border-top: solid;
+		border-left: solid;
+		color: grey;
+		bottom: 0%;
+		width: 900px;
+
+		height: 25px;
+		padding: 0px 5px;
+
+		position: absolute;
+		left: 500%;
+		top: 0%;
+		margin-left: 10px;
+		margin-top: -1px;
+
+		font-size: 20px;
+	}
+
 

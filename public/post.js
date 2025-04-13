@@ -2,19 +2,46 @@
 
 
 const postbutton = document.getElementById("new");
-const bck = document.querySelector("#about");
+
 const title = document.querySelector("#sp");
 
 postbutton.onclick = addpost;
-bck.onclick = getinfo;
+
 postbutton.onload = getinfo;
 
 window.onload = getinfo;
 
 var allpost = [];
+var alldate = [];
 
 let dowhat = 'a';
 
+var ite = localStorage.getItem('qUsername')
+console.log(ite);
+
+function butonanimation(button)
+{
+	button.addEventListener('mouseover', function(e){
+		
+		if(button) button.classList.add('hover');
+	});
+
+	button.addEventListener('mouseleave',function(e){
+		
+		if(button) button.classList.remove('hover');
+		
+	});
+
+	button.addEventListener('animationend',function(e){
+		
+		if(button) button.classList.remove('hover');
+		
+	});
+
+
+}
+
+butonanimation(postbutton)
 
 
 
@@ -30,7 +57,7 @@ const res = await fetch(baseurl,{
 console.log(res);
 const data = await res.json()
 console.log(data.info)
-createoldpost(data.info);
+createoldpost(data.info, data.date);
 
 
 }
@@ -45,17 +72,30 @@ function updateposts(ele)
 	ele.innerHTML = ''
 	for (var i = allpost.length - 1; i >= 0; i--) {
 		
-
+		ele.appendChild(alldate[i]);
 		ele.appendChild(allpost[i]);
 		
 	}
 }
 
-function createoldpost(data)
+function createoldpost(data, date)
 {
-	for (var i = data.length - 1; i >= 0; i--) {
+	for (var i = 0; i <= data.length-1 ; i++) {
 		
 	
+		const para1 = document.createElement("div");
+		para1.setAttribute('class', 'label');
+
+		//const node1 = document.createTextNode(date[i]);
+		//para1.appendChild(node1);
+
+		const node1 = document.createElement("span");
+		node1.setAttribute('class', 'label2');
+		node1.innerHTML = date[i]
+		para1.appendChild(node1);
+
+		alldate.push(para1)
+
 		const para = document.createElement("p");
 		para.setAttribute('class', 'posts');
 
@@ -77,8 +117,12 @@ function createoldpost(data)
 
 async function addpost(e)
 {
+	
+	if(ite == null)
+	{
 
-
+		window.location.href = "login.html"
+	}
 
 	var text = window.prompt("Write new post");
 	if (!(/[a-z]/i.test(text)) || text == null)
@@ -86,8 +130,19 @@ async function addpost(e)
 		return;
 	}
 
+	const para1 = document.createElement("div");
+	para1.setAttribute('class', 'label');
+
+	
+	const node1 = document.createElement("span");
+	node1.setAttribute('class', 'label2');
+	node1.innerHTML = Date()+" by:"+ite
+	para1.appendChild(node1);
+
+	
 	
 
+	alldate.push(para1)
 
 
 
@@ -112,6 +167,7 @@ async function addpost(e)
 
 		dowhat = 'r';
 		allpost.shift();
+		alldate.shift();
 	}
 
 	e.preventDefault()
@@ -119,7 +175,7 @@ async function addpost(e)
 		method:'POST',
 		headers:{"Content-Type":'application/json'},
 
-		body:JSON.stringify({parcel:text,cnd:dowhat})
+		body:JSON.stringify({parcel:text,cnd:dowhat,date:Date()+" by:"+ite})
 
 		
 	})

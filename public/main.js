@@ -2,6 +2,10 @@
 console.log("HELLO")
 
 
+
+
+
+
 const aboutbutton = document.querySelector("#about");
 
 
@@ -25,6 +29,35 @@ aboutbutton.addEventListener('click', gotoabout);
 cal.onclick = gotocal;
 cnt.onclick = gotocnt;
 pst.onclick = gotopst;
+
+
+function butonanimation(button)
+{
+	button.addEventListener('mouseover', function(e){
+		
+		if(button) button.classList.add('an');
+	});
+
+	button.addEventListener('mouseleave',function(e){
+		console.log("hhh")
+		if(button) button.classList.remove('an');
+		if(button) button.classList.add('pn');
+	});
+
+	button.addEventListener('animationend',function(e){
+		console.log("hhh")
+		if(button) button.classList.remove('pn');
+		
+	});
+
+
+}
+
+butonanimation(cal);
+butonanimation(cnt);
+butonanimation(pst);
+
+
 
 
 function gotoabout()

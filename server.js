@@ -64,7 +64,7 @@ app.get('/info',(req,res) =>{
 });
 
 app.post('/',(req,res) =>{
-	const { parcel,cnd } =req.body
+	const { parcel,cnd,date } =req.body
 	console.log(cnd)
 
 	fs.readFile("datax.json",(error,data)=>{
@@ -77,10 +77,12 @@ app.post('/',(req,res) =>{
 	const user = JSON.parse(data);
 
 	user.info.push(parcel)
+	user.date.push(date)
 
 	if(cnd=='r')
 	{
 		user.info.shift();
+		user.date.shift();
 	}
 
 	//data1 = stringify(user);
